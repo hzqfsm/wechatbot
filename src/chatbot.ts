@@ -152,7 +152,7 @@ export class ChatBot {
   }
 
   private askResponse(requestId: string, replyCallback: (responseData: ResponseData) => Promise<void>, intervalId: number) {
-    const askUrl = `${Config.chatbotProxy}/v2/chat/response?request_id=${requestId}`;
+    const askUrl = `${Config.chatbotProxy}/v1/response?request_id=${requestId}`;
     Logger.log(`🎯 Wait response: ${askUrl}`);
     getData(askUrl)
         .then((responseData: ResponseData) => {
@@ -171,7 +171,7 @@ export class ChatBot {
   }
 
   private async ask(sessionId: string, username: string, text: string, replyCallback: (responseData: ResponseData) => Promise<void>) {
-    const askUrl = `${Config.chatbotProxy}/v2/chat`;
+    const askUrl = `${Config.chatbotProxy}/v1`;
     const requestBody: RequestBody = {
       message: text,
       session_id: sessionId,
